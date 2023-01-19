@@ -31,6 +31,29 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game(numberOfRounds) {
+  let numberOfWins = 0;
+  
+  for (let i = 0; i < numberOfRounds; i++) {
+    let a = prompt("Enter your selection: Rock, Paper, or Scissors");
+    let b = getComputerChoice();
+    let result = playRound(a, b);
+
+    console.log(result);
+
+    let resultPart = result.slice(4,5);
+    if (resultPart === "W") {
+      numberOfWins++;
+    }
+  }
+
+  if (numberOfWins < 3 && numberOfWins != 1) {
+    console.log("You Lose The Game! You only had " + numberOfWins + " wins.");
+  } else if (numberOfWins == 1) {
+    console.log("You Lose The Game! You only had " + numberOfWins + " win.");
+  }  else {
+    console.log("You Win The Game! You had " + numberOfWins + " wins.");
+  }
+}
+
+game(5);
